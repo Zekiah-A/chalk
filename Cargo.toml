@@ -1,6 +1,6 @@
 [package]
 name = "chalk"
-version = "0.2.0"
+version = "0.1.0-alpha.1"
 edition = "2024"
 description = "Blackboard, without the friction."
 repository = "https://github.com/Zekiah-A/chalk"
@@ -20,3 +20,7 @@ serde_json = "1"
 tungstenite = "0.28"
 termimad = "0.35"
 
+
+[profile.release]
+lto = "thin"
+strip = "symbols"

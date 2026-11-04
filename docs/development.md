@@ -88,3 +88,30 @@ Use `cargo build --release` for an optimized binary or `cargo install --path .` 
 Manual checks should use a course and asset chosen locally. Keep real university domains, course IDs, cookies and materials out of committed fixtures, screenshots and issue reports. Use `--save-only` when checking downloads without opening a viewer.
 
 [Issues](https://github.com/Zekiah-A/chalk/issues) and pull requests are welcome. The project is licensed under [GNU GPLv3](../LICENSE), with the SPDX identifier `GPL-3.0-only`.
+
+## Versions and releases
+
+Chalk follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). The first published version is **0.1.0-alpha.1**; the `v` prefix belongs only to Git tags (`v0.1.0-alpha.1`).
+
+The supported interface means documented CLI commands, flags and exit behavior; configuration names and stored formats; MCP tool names, input schemas and Chalk-owned response fields; and export bundle filenames and Chalk-owned manifest fields. Menu wording, display layout and raw upstream Blackboard metadata are not stable interfaces. Blackboard API changes are outside Chalk’s control and may require a compatibility fix.
+
+| Release | When to use it |
+| --- | --- |
+| `0.1.0-alpha.2`, `alpha.3`, … | Compatible fixes and additions while the first milestone is still experimental |
+| `0.1.0-beta.1` | Feature scope has settled; focus is on reliability and feedback |
+| `0.1.0-rc.1` | Candidate for the first non-prerelease version; no known release blockers |
+| `0.1.0` | First usable milestone with its advertised workflows verified; still pre-1.0 |
+| `0.1.1` | Compatible fixes after `0.1.0` |
+| `0.2.0-alpha.1` or `0.2.0` | A new feature milestone or a breaking interface change before 1.0; identify breaks and migrations in the notes |
+| `1.0.0` | Commit to the documented interface after core workflows and upgrades are dependable on advertised platforms; this does not promise support for every university configuration |
+
+After 1.0, use patch versions for compatible fixes, minor versions for compatible features and deprecations, and major versions for breaking changes. Deprecate interfaces before removing them where practical. Prereleases remain experimental; any deliberate breaking change, even during alpha, starts a new minor line and is called out explicitly. Never move a released tag or replace published artifacts; issue a new version.
+
+Keep Cargo.toml, Cargo.lock, `chalk --version`, MCP server metadata, the Git tag and release notes in agreement. Numbered alphas are GitHub **prereleases**, not stable releases. Release notes should state available platforms, installation steps, user-visible changes and known limitations. Publish compiled assets with SHA-256 checksums and matching source. Do not claim a platform or university setup was tested unless it was.
+
+The first binary targets `x86_64-unknown-linux-musl` for Linux x64. Release builds strip debug symbols and use thin LTO. Builds run from a source-only snapshot, with source path remapping to avoid embedding developer home paths. The corresponding-source archive includes locked dependency sources and their license notices; it can be built offline once the Rust toolchain and target are installed.
+
+```sh
+# In the corresponding-source archive, with the musl target/toolchain available:
+cargo build --offline --locked --release --target x86_64-unknown-linux-musl
+```

@@ -780,10 +780,15 @@ fn download(client: &Client, url: &str, path: &Path) -> Result<()> {
 }
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
+    if args.iter().any(|a| a == "--version" || a == "-V") {
+        println!("chalk {}", env!("CARGO_PKG_VERSION"));
+        return Ok(());
+    }
     if args.iter().any(|a| a == "--help" || a == "-h") {
         println!("{BANNER}");
+        println!("chalk {}\n", env!("CARGO_PKG_VERSION"));
         println!(
-            "chalk [browse | grab | login | export | mcp]\n\nNo arguments / browse: navigate course folders, read text, open selected files\nbrowse [--course ID_OR_NAME] [--save-only] [--fresh] [--out DIR]\ngrab: bulk download course files and text for you or an AI agent\nlogin [DOMAIN_OR_HTTPS_URL]: configure your university and sign in (also accepts --url)\nmcp: start the stdio MCP server (sign in first)\nexport --course ID_OR_NAME [--assessment] [--all-announcements] [--out DIR]\n\nBrowsing: Enter selects, type to filter, Esc goes back.\nSet CHALK_BROWSER to a Chromium/Brave executable if needed."
+            "chalk [browse | grab | login | export | mcp]\n\nNo arguments / browse: navigate course folders, read text, open selected files\nbrowse [--course ID_OR_NAME] [--save-only] [--fresh] [--out DIR]\ngrab: bulk download course files and text for you or an AI agent\nlogin [DOMAIN_OR_HTTPS_URL]: configure your university and sign in (also accepts --url)\nmcp: start the stdio MCP server (sign in first)\nexport --course ID_OR_NAME [--assessment] [--all-announcements] [--out DIR]\n\nBrowsing: Enter selects, type to filter, Esc goes back.\nUse --version to show the installed version.\nSet CHALK_BROWSER to a Chromium/Brave executable if needed."
         );
         return Ok(());
     }

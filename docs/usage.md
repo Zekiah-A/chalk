@@ -2,6 +2,31 @@
 
 [← Back to the quick start](../README.md)
 
+## Installation
+
+### Download the alpha
+
+On Linux x64, open the [alpha release](https://github.com/Zekiah-A/chalk/releases/tag/v0.1.0-alpha.1) and download the file ending in `x86_64-unknown-linux-musl.tar.gz`. Extract it using your file manager and open a terminal in the extracted folder. Run `./chalk` there. This portable build does not need Rust installed.
+
+Commands below use `chalk`. If you are running directly from the extracted folder, use `./chalk` instead. To make it available as `chalk` everywhere, copy it into a directory on your terminal’s PATH; a common Linux choice is:
+
+```sh
+mkdir -p ~/.local/bin
+install -m 755 chalk ~/.local/bin/chalk
+```
+
+If your terminal still cannot find `chalk`, use `./chalk` or add `~/.local/bin` to your PATH.
+
+### Install from source
+
+For Linux or macOS, install [Rust](https://www.rust-lang.org/tools/install), then run:
+
+```sh
+cargo install --git https://github.com/Zekiah-A/chalk.git --tag v0.1.0-alpha.1 --locked
+```
+
+Brave or Chromium is needed for sign-in. Opening files automatically also needs a desktop and a suitable viewer. The first compiled alpha is Linux x64; other systems currently use the source installation.
+
 ## Sign in
 
 Find your university’s Blackboard address in your browser, then use its domain:
@@ -73,3 +98,7 @@ Keep your exports private: they can include course materials, announcements, and
 | Your university’s setup doesn’t work | [Report the problem](https://github.com/Zekiah-A/chalk/issues) with the command and error message. Remove personal details, university addresses, cookies, and course materials before posting. |
 
 For submission instructions and deadlines, check the assignment’s submission page too. Some instructions live in tools that Chalk cannot read.
+
+## Check your version
+
+Run `chalk --version` when checking for updates or reporting an issue. Download a newer release to update; your locally saved sign-in and downloads are kept separately from the executable.
