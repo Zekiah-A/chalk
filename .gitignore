@@ -1,0 +1,11 @@
+/target/
+/exports/
+/downloads/
+/.local/
+*.part
+session.json
+site.json
+.env
+.env.*
+!.env.example
+

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "chalk": {
+      "command": "/absolute/path/to/chalk",
+      "args": [
+        "mcp"
+      ],
+      "env": {
+        "CHALK_EXPORT_DIR": "/absolute/path/to/exports"
+      }
+    }
+  }
+}
